@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Add Book</title>
+<link rel="stylesheet" href="/styles/style.css" />
+</head>
+<body>
+<header>
+<h1>Add a New Book</h1>
+</header>
+
+
+<form method="POST" action="/new" class="form-container">
+<label>Title:</label>
+<input type="text" name="title" required />
+
+
+<label>Note:</label>
+<textarea name="note"></textarea>
+
+
+<label>Rating:</label>
+<input type="number" name="rating" min="1" max="5" required />
+
+
+<label>Date:</label>
+<input type="date" name="date" required />
+
+
+<button type="submit">Add</button>
+</form>
+
+
+<a href="/" class="back-button">Back to list</a>
+</body>
+</html>

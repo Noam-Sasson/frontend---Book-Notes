@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book List</title>
+<link rel="stylesheet" href="/styles/style.css" />
+</head>
+<body>
+<header>
+<h1>My Book Collection</h1>
+</header>
+
+
+<div class="controls">
+<form method="GET" action="/" class="search-form">
+<input type="text" name="search" placeholder="Search by title..." value="<%= typeof search !== 'undefined' ? search : '' %>" />
+<button type="submit">Search</button>
+</form>
+
+
+<form method="GET" action="/" class="sort-form">
+<select name="sortBy" onchange="this.form.submit()">
+<option value="">Order by...</option>
+<option value="title" <%= sortBy === 'title' ? 'selected' : '' %>>Title</option>
+<option value="rating" <%= sortBy === 'rating' ? 'selected' : '' %>>Rating</option>
+<option value="date" <%= sortBy === 'date' ? 'selected' : '' %>>Date</option>
+</select>
+</form>
+
+
+<a href="/new" class="add-button">Add Book</a>
+<button id="editToggle" class="edit-toggle">Edit</button>
+</div>
+
+
+<ul class="book-list">
+<% books.forEach(book => { %>
+<li class="book-item">
+<div class="book-info">
+<h3><%= book.title %></h3>
+<p><strong>Note:</strong> <%= book.note %></p>
+<p><strong>Rating:</strong> <%= book.rating %></p>
+<p><strong>Date:</strong> <%= book.date %></p>
+</div>
+<div class="edit-controls hidden">
+<a href="/edit/<%= book.id %>" class="edit-btn">Edit</a>
+<a href="/delete/<%= book.id %>" class="delete-btn">Delete</a>
+</div>
+</li>
+<% }) %>
+</ul>
+
+
+<script>
+const toggle = document.getElementById('editToggle');
+const controls = document.querySelectorAll('.edit-controls');
+
+
+toggle.addEventListener('click', () => {
+controls.forEach(ctrl => ctrl.classList.toggle('hidden'));
+});
+</script>
+</body>
+</html>
