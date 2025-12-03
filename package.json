@@ -13,7 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Noam-Sasson/frontend---Book-Notes/issues"
   },
@@ -22,7 +22,6 @@
     "axios": "^1.13.2",
     "body-parser": "^2.2.1",
     "ejs": "^3.1.10",
-    "express": "^5.2.1",
-    "pg": "^8.16.3"
+    "express": "^5.2.1"
   }
 }
