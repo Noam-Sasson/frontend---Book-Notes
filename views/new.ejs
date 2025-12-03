@@ -3,36 +3,56 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Add Book</title>
+<title><%= mode === 'edit' ? 'Edit Book' : 'Add Book' %></title>
 <link rel="stylesheet" href="/styles/style.css" />
 </head>
+
 <body>
 <header>
-<h1>Add a New Book</h1>
+<h1><%= mode === 'edit' ? 'Edit Book' : 'Add a New Book' %></h1>
 </header>
 
+<!-- Determine the correct route -->
+<form 
+  method="POST" 
+  action="<%= mode === 'edit' ? '/edit/' + book.id : '/new' %>" 
+  class="form-container"
+>
 
-<form method="POST" action="/new" class="form-container">
 <label>Title:</label>
-<input type="text" name="title" required />
-
+<input 
+  type="text" 
+  name="title" 
+  required 
+  value="<%= book.title ? book.title : '' %>" 
+/>
 
 <label>Note:</label>
-<textarea name="note"></textarea>
-
+<textarea name="note"><%= book.note ? book.note : '' %></textarea>
 
 <label>Rating:</label>
-<input type="number" name="rating" min="1" max="5" required />
-
+<input 
+  type="number" 
+  name="rating" 
+  min="1" 
+  max="5" 
+  value="<%= book.rating ? book.rating : '' %>" 
+  required 
+/>
 
 <label>Date:</label>
-<input type="date" name="date" required />
+<input 
+  type="date" 
+  name="date" 
+  value="<%= book.readdate ? book.readdate.substring(0,10) : '' %>" 
+  required 
+/>
 
+<button type="submit"><%= mode === 'edit' ? 'Save Changes' : 'Add' %></button>
 
-<button type="submit">Add</button>
 </form>
 
-
 <a href="/" class="back-button">Back to list</a>
+
 </body>
 </html>

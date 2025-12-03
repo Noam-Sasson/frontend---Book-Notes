@@ -41,7 +41,7 @@
 <h3><%= book.title %></h3>
 <p><strong>Note:</strong> <%= book.note %></p>
 <p><strong>Rating:</strong> <%= book.rating %></p>
-<p><strong>Date:</strong> <%= book.date %></p>
+<p><strong>Date:</strong> <%= book.readdate.substring(0,10) %></p>
 </div>
 <div class="edit-controls hidden">
 <a href="/edit/<%= book.id %>" class="edit-btn">Edit</a>
