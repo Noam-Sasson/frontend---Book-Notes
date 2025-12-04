@@ -17,7 +17,7 @@ app.get("/", async (req, res) => {
     // Fetch notes from backend API
     try {
     sortBy = req.query.sortBy || sortBy;
-    searchBy = req.query.search || searchBy;
+    searchBy = req.query.search || '';
     const result = await axios.get(API_URL + `/top/?limit=10&orderBy=${sortBy}&like=${searchBy}`);
     books = result.data.data;
     console.log(books);
