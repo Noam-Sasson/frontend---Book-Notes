@@ -9,15 +9,19 @@ const API_URL = "http://localhost:3001"; // Backend API URL
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let sortBy = 'id'
-let books = []
+let sortBy = 'id';
+let searchBy = '';
+let books = [];
 
 app.get("/", async (req, res) => {
     // Fetch notes from backend API
     try {
-    const result = await axios.get(API_URL + "/top/?limit=10");
+    sortBy = req.query.sortBy || sortBy;
+    searchBy = req.query.search || searchBy;
+    const result = await axios.get(API_URL + `/top/?limit=10&orderBy=${sortBy}&like=${searchBy}`);
     books = result.data.data;
     console.log(books);
+
     res.render("index.ejs", { sortBy:sortBy, books: books });
     } catch (error) {
     res.render("index.ejs", { sortBy:sortBy, books: books });
